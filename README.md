@@ -1,5 +1,6 @@
--- to run the app USE: npm start
--- i push my code to the main branch
+-- to run the app USE: npm start.
+
+- i push my code to the main branch
 
 -- I create a simple UI consist of 2 pages
 
