@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header') -%>
+    <body class="d-flex flex-column">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <%- include('layouts/navbar') -%>
+            <!-- Header-->
+            <header class="py-5 bg-white" >
+                <div class="container px-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-xxl-6">
+                            <div class="text-center">
+                                <h1 class="fw-bolder mb-3 text-black">Simple CRUD Operation</h1>
+                                <p>Here the new User is created - Create Operation</p>
+                                <!-- <p class="lead fw-normal text-muted mb-4">Start Bootstrap was built on the idea that quality, functional website templates and themes should be available to everyone. Use our open source, free products, or support us by purchasing one of our premium products or services.</p> -->
+                                <!-- <a class="btn btn-primary btn-lg" href="#scroll-target">Book G2 Test</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="py-3 bg-white">
+                <div class="container px-2">
+                    <!-- Contact form-->
+                    <div class="bg-white rounded-3  px-4 py-4 mb-5"> 
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-6 col-xl-5">
+                                <form action="/newuser" method="POST">
+                                   
+                                    <div class="form-floating mb-4">
+                                        <h3>Create Sample Data</h3>
+                                        <!-- First Name -->
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" id="firstName" type="text" name= firstName required>
+                                            <label for="firstName">First Name</label>
+                                            <!-- <div class="invalid-feedback" data-sb-feedback="name:required">First name id is required</div> -->
+                                        </div>
+                                        <!-- Last Name -->
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" id="lastName" type="text" name= lastName required>
+                                            <label for="lastName">Last Name</label>
+                                            <!-- <div class="invalid-feedback" data-sb-feedback="name:required">last name is required</div> -->
+                                        </div>
+                                       <!-- license Number -->
+                                        <div class="form-floating mb-4">
+                                            <input class="form-control" id="email" type="email" name= email required>
+                                            <label for="name">Email</label>
+                                        </div>  
+                                    </div>
+                                    
+                                    
+                                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit">Register New User</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <!-- Footer-->
+        <%- include('layouts/footer') -%>
+        <%- include('layouts/script') -%>
+    </body>
+</html>

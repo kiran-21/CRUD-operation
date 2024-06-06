@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') -%>
+<body class="d-flex flex-column">
+    <main class="flex-shrink-0">
+        <!-- Navigation -->
+        <%- include('layouts/navbar') -%>
+
+        <!-- Content -->
+        <section class="py-5">
+            <div class="container px-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-xl-8">
+                        <div class="text-center my-5">
+                            <h1 class="fw-bolder mb-3">Registered Users</h1>
+                            <p>Here the data is Retrieved from the Database - READ Operation</p>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% users.forEach(user => { %>
+                                    <tr>
+                                        <td><%= user.firstName %></td>
+                                        <td><%= user.lastName %></td>
+                                        <td><%= user.email %></td>
+                                        <td>
+                                            <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#updateModal<%= user.id %>">Update</button>
+                                            <form action="/deleteuser/<%= user.id %>" method="POST" class="d-inline">
+                                                <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Update Modal -->
+                                    <div class="modal fade" id="updateModal<%= user.id %>" tabindex="-1" aria-labelledby="updateModalLabel<%= user.id %>" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="updateModalLabel<%= user.id %>">Update User</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/updateuser/<%= user.id %>" method="POST">
+                                                        <div class="form-floating mb-3">
+                                                            <input class="form-control" id="firstName<%= user.id %>" type="text" name=firstName value="<%= user.firstName %>" required>
+                                                            <label for="firstName<%= user.id %>">First Name</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input class="form-control" id="lastName<%= user.id %>" type="text" name=lastName value="<%= user.lastName %>" required>
+                                                            <label for="lastName<%= user.id %>">Last Name</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input class="form-control" id="email<%= user.id %>" type="email" name=email value="<%= user.email %>" required>
+                                                            <label for="email<%= user.id %>">Email</label>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <%- include('layouts/footer') -%>
+    <%- include('layouts/script') -%>
+</body>
+</html>
