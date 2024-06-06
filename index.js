@@ -68,11 +68,11 @@ app.post('/updateuser/:id', async (req, res) => {
         }
     });
     
-// Route to delete a user
+// delete a user
 app.post('/deleteuser/:id', async (req, res) => {
         try {
             await usermodel.findByIdAndDelete(req.params.id);
-            res.render('userList');
+            res.redirect('/users');
         } catch (error) {
             console.error("Error deleting user from the database", error);
             res.status(500).send("Internal Server Error");
